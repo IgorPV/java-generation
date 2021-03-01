@@ -18,7 +18,7 @@ public class exercicioUm {
 	soma = A[0] + A[1] + A[5];
 	System.out.println("A[0]+A[1]+A[5] = "+soma);
 	
-	A[4]=100;
+	A[3]=100;
 	
 	for(int x=0;x<6;x++) {
 		System.out.println(A[x]);
