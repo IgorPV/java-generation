@@ -30,8 +30,7 @@ public class exercicioQuatro {
 			}
 		}
 
-		System.out.println(
-				"Entre com a operação:\n1 -- Somar as matrizes\n2 -- Subtrair m1 de m2\n3 -- Somar uma constante as matrizes\n4 -- imprimir m1 e m2");
+		System.out.println("Entre com a operação:\n1 -- Somar as matrizes\n2 -- Subtrair m1 de m2\n3 -- Somar uma constante as matrizes\n4 -- imprimir m1 e m2");
 		op = ler.nextInt(); //lendo a operação
 		while (op < 1 || op > 4) { //repetição para garantir a entrada correta
 			System.out.println(
@@ -52,7 +51,7 @@ public class exercicioQuatro {
 		case 2:
 			for (l = 0; l < 2; l++) {
 				for (c = 0; c < 2; c++) {
-					m3[l][c] = m2[l][c] - m2[l][c];
+					m3[l][c] = m2[l][c] - m1[l][c];
 					System.out.println(m3[l][c]);
 				}
 			}break;
