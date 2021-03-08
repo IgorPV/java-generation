@@ -65,8 +65,9 @@ public class Postos extends Pessoas {
 					
 		System.out.println("\nEntre com o ano de nascimento(AAAA):");
 		super.setAnoNasc(leia.nextInt());
-		//Pegando idade com base no ano de nascimento
-		super.setIdade(super.getAnoNasc()-2021);
+		
+		System.out.println("\nEntre com a idade:");
+		super.setIdade(leia.nextInt());
 		leia.nextLine();
 		
 		if(super.getIdade()<18) {

@@ -4,7 +4,7 @@ public class PessoasTeste {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Postos p1 [] = new Postos[1];
+		Postos p1 [] = new Postos[2];
 		Vacina v1 = new Vacina();
 		
 		v1.printVacina(); //informativo sobre as vacinas
