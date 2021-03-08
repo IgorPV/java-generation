@@ -1,22 +1,23 @@
-package projetoJavaVacina;
+package projetoVacinaIaia;
 
 public class PessoasTeste {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Pessoas teste[] = new Pessoas[1];
+		Postos p1 [] = new Postos[1];
+		Vacina v1 = new Vacina();
 		
+		v1.printVacina(); //informativo sobre as vacinas
 		
-		for(int i=0; i<teste.length ;i++) {
-			teste[i] = new Pessoas(null,null,null,null,null,null,0);
-			teste[i].cadastrarPessoa();
-			teste[i].verificaCad();
-			teste[i].setStatusVacina();
-		}
-		
-		
+		for(int i=0; i<p1.length ;i++) {
+			p1[i]= new Postos();
+			p1[i].cadastrarPessoa(); //cadastrando a pessoa para ser vacinada
 			
+			p1[i].listaPostos(); //listando os postos drive thru disponíveis
+			p1[i].escolhaPosto(); //usuário escolhe o posto de acordo com a região que mora
 		
+			p1[i].calendario(); //informando o calendário de vacinação para a pessoa
+	   }
 	}
 
 }
