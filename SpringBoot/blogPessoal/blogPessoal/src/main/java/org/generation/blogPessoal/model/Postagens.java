@@ -12,13 +12,16 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
+
 @Entity
 @Table(name = "Postagens")
+
 public class Postagens {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@NotNull
 	@Size(min = 5, max = 100)
@@ -30,12 +33,12 @@ public class Postagens {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
-
-	public long getId() {
+	
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -62,5 +65,6 @@ public class Postagens {
 	public void setData(Date data) {
 		this.data = data;
 	}
+
 	
 }
