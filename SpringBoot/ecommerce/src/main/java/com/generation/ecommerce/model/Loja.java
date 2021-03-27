@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -20,7 +21,7 @@ public class Loja {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idLoja;
+	private Long idLoja;
 	
 	@NotNull
 	@Size(min=5, max=45)
@@ -30,8 +31,6 @@ public class Loja {
 	@Size(min=5, max=100)
 	private String descricao;
 	
-	//private Produto produto;
-	
 	@ManyToOne
 	@JsonIgnoreProperties({"lojasCriadas"})
 	private Usuario usuarioCriador;
@@ -40,13 +39,16 @@ public class Loja {
 	@ManyToMany(mappedBy = "lojasInscritas",cascade = CascadeType.ALL)
 	private List<Usuario> usuariosInscritos;
 	
+	@OneToMany(mappedBy = "vendidoPor",cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("vendidoPor")
+	private List<Produto> produtosVendidos;
 	
 	
-	public int getIdLoja() {
+	public Long getIdLoja() {
 		return idLoja;
 	}
 
-	public void setIdLoja(int idLoja) {
+	public void setIdLoja(Long idLoja) {
 		this.idLoja = idLoja;
 	}
 

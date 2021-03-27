@@ -21,7 +21,7 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idUsuario;
+	private Long idUsuario;
 	
 	@NotNull
 	@Size(min = 2, max = 45)
@@ -46,12 +46,19 @@ public class Usuario {
 						@JoinColumn(name = "fk_idLoja"))
 	private List<Loja> lojasInscritas;
 	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable( joinColumns = 
+						@JoinColumn(name = "fk_idUsuario"),
+				inverseJoinColumns = 
+						@JoinColumn(name = "fk_idProduto"))
+	private List<Produto> produtosComprados;
 	
-	public int getIdUsuario() {
+	
+	public Long getIdUsuario() {
 		return idUsuario;
 	}
 
-	public void setIdUsuario(int idUsuario) {
+	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
