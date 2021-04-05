@@ -27,20 +27,21 @@ public class Loja {
 	@Size(min=5, max=45)
 	private String nomeLoja;
 	
-	@NotNull
+	
 	@Size(min=5, max=100)
 	private String descricao;
 	
 	@ManyToOne
-	@JsonIgnoreProperties({"lojasCriadas"})
+	@JsonIgnoreProperties({"lojasCriadas","senha","lojasInscritas","produtosComprados"})
 	private Usuario usuarioCriador;
 
 
 	@ManyToMany(mappedBy = "lojasInscritas",cascade = CascadeType.ALL)
+	@JsonIgnoreProperties({"lojasCriadas","senha","produtosComprados"})
 	private List<Usuario> usuariosInscritos;
 	
 	@OneToMany(mappedBy = "vendidoPor",cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("vendidoPor")
+	@JsonIgnoreProperties({"vendidoPor","senha","lojasCriadas","senha","lojasInscritas","produtosComprados"})
 	private List<Produto> produtosVendidos;
 	
 	

@@ -39,7 +39,6 @@ public class CategoriaController {
 		return services.findByTipo(categoria);
 	}
 	
-		
 	@PostMapping
 	public ResponseEntity<Categoria> cadastro(@RequestBody Categoria categoria){
 		return services.novaCategoria(categoria);

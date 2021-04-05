@@ -11,12 +11,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@Table(uniqueConstraints= @UniqueConstraint(columnNames={"nome", "usuario"}))
 public class Usuario {
 	
 	@Id
@@ -44,6 +47,7 @@ public class Usuario {
 						@JoinColumn(name = "fk_idUsuario"),
 				inverseJoinColumns =
 						@JoinColumn(name = "fk_idLoja"))
+	@JsonIgnoreProperties({"descricao","usuariosInscritos"})
 	private List<Loja> lojasInscritas;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
