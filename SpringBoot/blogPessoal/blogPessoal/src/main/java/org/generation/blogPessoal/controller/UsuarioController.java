@@ -29,8 +29,13 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Usuario> authentication(@RequestBody Usuario userNovo){
-		return ResponseEntity.status(HttpStatus.CREATED).body(service.cadastrarUsuario(userNovo));
+	public ResponseEntity<?> authentication(@RequestBody Usuario userNovo){
+		if(service.cadastrarUsuario(userNovo).isEmpty()) {
+			return ResponseEntity.status(HttpStatus.REQUEST_TIMEOUT).body("Usuário já existente!");
+		} else {
+			return ResponseEntity.status(HttpStatus.CREATED).body(service.cadastrarUsuario(userNovo));
+		}
+		
 	}
 	
 	
