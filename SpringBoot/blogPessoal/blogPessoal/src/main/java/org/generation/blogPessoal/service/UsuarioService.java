@@ -3,10 +3,10 @@ package org.generation.blogPessoal.service;
 import java.nio.charset.Charset;
 import java.util.Optional;
 import org.apache.commons.codec.binary.Base64;
-
-
+import org.generation.blogPessoal.model.Postagens;
 import org.generation.blogPessoal.model.Usuario;
 import org.generation.blogPessoal.model.UsuarioLogin;
+import org.generation.blogPessoal.repository.PostagensRepository;
 import org.generation.blogPessoal.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,6 +17,9 @@ public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository repository;
+	
+	@Autowired
+	private PostagensRepository postagensRepo;
 	
 	public Optional<Usuario> cadastrarUsuario(Usuario usuario) {
 		if(repository.findByUsuario(usuario.getUsuario()).isPresent()) {
@@ -51,4 +54,19 @@ public class UsuarioService {
 		}
 		return null;
 	}
+	
+	
+	public Optional<Usuario> criarPostagens(Postagens post, Long idUsuario){
+		if(repository.findById(idUsuario).isPresent()) {
+			post.setCriadoPor(repository.findById(idUsuario).get());
+			postagensRepo.save(post);
+			return repository.findById(idUsuario);
+		
+		} else {
+			
+			return Optional.empty();
+			
+		}
+	}
+	
 }

@@ -41,6 +41,10 @@ public class Postagens {
 	@JsonIgnoreProperties("post")
 	private Tema tema;
 	
+	@ManyToOne
+	@JsonIgnoreProperties({"postagensCriadas","senha","nome"})
+	private Usuario criadoPor;
+	
 	public Long getId() {
 		return id;
 	}
@@ -79,6 +83,14 @@ public class Postagens {
 
 	public void setTema(Tema tema) {
 		this.tema = tema;
+	}
+
+	public Usuario getCriadoPor() {
+		return criadoPor;
+	}
+
+	public void setCriadoPor(Usuario criadoPor) {
+		this.criadoPor = criadoPor;
 	}
 
 	

@@ -1,11 +1,17 @@
 package org.generation.blogPessoal.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Usuario {
@@ -25,7 +31,12 @@ public class Usuario {
 	@NotNull
 	@Size(min=5)
 	private String senha;
-
+	
+	@OneToMany(mappedBy = "criadoPor", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("criadoPor")
+	private List<Postagens> postagensCriadas;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -56,6 +67,14 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public List<Postagens> getPostagensCriadas() {
+		return postagensCriadas;
+	}
+
+	public void setPostagensCriadas(List<Postagens> postagensCriadas) {
+		this.postagensCriadas = postagensCriadas;
 	}
 	
 	
