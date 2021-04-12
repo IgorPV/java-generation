@@ -15,6 +15,7 @@ public class UserDetailsImpl implements UserDetails {
 	
 	
 	
+	
 	public UserDetailsImpl(Usuario user) {
 		
 		this.userName = user.getUsuario();

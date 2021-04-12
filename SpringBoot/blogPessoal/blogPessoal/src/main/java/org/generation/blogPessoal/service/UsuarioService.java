@@ -58,6 +58,7 @@ public class UsuarioService {
 	
 	public Optional<Usuario> criarPostagens(Postagens post, Long idUsuario){
 		if(repository.findById(idUsuario).isPresent()) {
+			
 			post.setCriadoPor(repository.findById(idUsuario).get());
 			postagensRepo.save(post);
 			return repository.findById(idUsuario);
